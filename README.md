@@ -18,3 +18,7 @@ From MBG to MBG-Ex, you just need to modify two parts of **generator configurati
       <property name="enableSubPackages" value="true" />
   </javaExampleGenerator>
 ```
+
+## Dependencies
+
+See [Release-1.0.0](https://github.com/tbwork/mbg-ex/tree/master/release).
