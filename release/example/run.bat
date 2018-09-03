@@ -1,0 +1,3 @@
+%~d0
+cd %~dp0
+java -jar D:\mbg\mbg-ex-1.0.0.jar -configfile generatorConfig.xml -overwrite
