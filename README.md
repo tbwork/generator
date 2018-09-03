@@ -1,4 +1,4 @@
-## MyBatis Generator Extended (MBG-Ex)
+## MyBatis Generator Extended (MBG-Ex)  [中文说明](https://github.com/tbwork/mbg-ex/blob/master/ReadMeCh.md)
 
 This version of MBG supports to specify the package of example files (e.g., XXXExample), rather than put them together with model files which is the standard way of [the offical MBG](https://github.com/mybatis/generator).
 
