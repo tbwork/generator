@@ -1,4 +1,4 @@
-## MyBatis Generator Extended (MBG-Ex) [English](https://github.com/tbwork/mbg-ex/blob/master/README.md)
+## MyBatis Generator Extended (MBG-Ex) [English Document](https://github.com/tbwork/mbg-ex/blob/master/README.md)
 
 该版本的MBG支持用户单独指定存放Example文件的包和目录，官网上只能把Example和Model放一起。这是应对实际中把数据库model和example（操作指导类）分开存放的场景。
 从MBG迁移到MBG-Ex，您只需修改配置文件的2个地方：
