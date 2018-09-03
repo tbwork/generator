@@ -1,14 +1,21 @@
-MyBatis Generator (MBG)
+## MyBatis Generator Extended (MBG-Ex)
 =======================
 
-[![Build Status](https://travis-ci.org/mybatis/generator.svg?branch=master)](https://travis-ci.org/mybatis/generator)
-[![Coverage Status](https://coveralls.io/repos/mybatis/generator/badge.svg?branch=master&service=github)](https://coveralls.io/github/mybatis/generator?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/561964c6a193340f2800033c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561964c6a193340f2800033c)
-[![Maven central](https://maven-badges.herokuapp.com/maven-central/org.mybatis.generator/mybatis-generator/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.mybatis.generator/mybatis-generator)
-[![License](http://img.shields.io/:license-apache-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+This version of MBG supports to specify the package of example files (e.g., XXXExample), rather than put them together with model files which is the standard way of offical [MBG](https://github.com/mybatis/generator).
 
-![mybatis-generator](http://mybatis.github.io/images/mybatis-logo.png)
+From MBG to MBG-Ex, you just need to modify two parts of **generator configuration file**:
 
-Code generator for MyBatis and iBATIS.
+### DOCTYPE Modification
 
-It will generate code for all versions of MyBatis, and versions of iBATIS after version 2.2.0. It will introspect a database table (or many tables) and will generate artifacts that can be used to access the table(s). This lessens the initial nuisance of setting up objects and configuration files to interact with database tables. MBG seeks to make a major impact on the large percentage of database operations that are simple CRUD (Create, Retrieve, Update, Delete).
+```
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "https://raw.githubusercontent.com/tbwork/tbwork.github.io/master/dtd/mybatis-generator-config_1_0.dtd" >
+```
+
+## ExampleGenerator Configuration
+
+```
+  <!-- Example Class -->
+  <javaExampleGenerator targetPackage="org.xxx.example" targetProject="../src/main/java">
+			<property name="enableSubPackages" value="true" />
+	</javaExampleGenerator>
+```
