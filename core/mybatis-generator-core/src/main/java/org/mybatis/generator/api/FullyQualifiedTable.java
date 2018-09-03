@@ -362,6 +362,30 @@ public class FullyQualifiedTable {
 
         return sb.toString();
     }
+    
+    /**
+     * Calculates a Java package fragment based on the table catalog and schema.
+     * If qualifiers are ignored, then this method will return an empty string.
+     * 
+     * <p>This method is used for determining the sub package for Java example objects only.
+     * It takes into account the possibility that a sub-package was added to the
+     * domain object name in the table configuration.
+     *
+     * @param isSubPackagesEnabled
+     *            the is sub packages enabled
+     * @return the subpackage for this table
+     */
+    public String getSubPackageForExample(boolean isSubPackagesEnabled) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getSubPackageForClientOrSqlMap(isSubPackagesEnabled));
+
+        if (stringHasValue(domainObjectSubPackage)) {
+            sb.append('.');
+            sb.append(domainObjectSubPackage);
+        }
+
+        return sb.toString();
+    }
 
     /**
      * Adds the delimiters.

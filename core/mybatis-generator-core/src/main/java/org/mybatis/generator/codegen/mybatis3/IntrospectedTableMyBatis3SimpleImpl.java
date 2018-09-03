@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2017 the original author or authors.
+ *    Copyright 2006-2018 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
 import org.mybatis.generator.codegen.AbstractJavaGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.SimpleAnnotatedClientGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.SimpleJavaClientGenerator;
+import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.SimpleModelGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.SimpleXMLMapperGenerator;
 import org.mybatis.generator.internal.ObjectFactory;
@@ -84,5 +85,15 @@ public class IntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBati
         initializeAbstractGenerator(javaGenerator, warnings,
                 progressCallback);
         javaModelGenerators.add(javaGenerator);
+    }
+    
+    @Override
+    protected void calculateJavaExampleGenerators(List<String> warnings,
+            ProgressCallback progressCallback) {
+    	
+        AbstractJavaGenerator javaGenerator = new ExampleGenerator();
+        initializeAbstractGenerator(javaGenerator, warnings,
+                progressCallback);
+        javaExampleGenerators.add(javaGenerator);
     }
 }

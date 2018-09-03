@@ -51,7 +51,7 @@
   tables.
 -->
 <!ELEMENT context (property*, plugin*, commentGenerator?, (connectionFactory | jdbcConnection), javaTypeResolver?,
-                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?, table+)>
+                         javaModelGenerator, javaExampleGenerator, sqlMapGenerator?, javaClientGenerator?, table+)>
 <!ATTLIST context id ID #REQUIRED
   defaultModelType CDATA #IMPLIED
   targetRuntime CDATA #IMPLIED
@@ -110,6 +110,15 @@
 -->
 <!ELEMENT javaModelGenerator (property*)>
 <!ATTLIST javaModelGenerator
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED>
+
+<!--
+  The javaExampleGenerator element is used to define properties of the Java Model Generator.
+  The Java Model Generator builds the Query by Example indicator classes.
+-->
+<!ELEMENT javaExampleGenerator (property*)>
+<!ATTLIST javaExampleGenerator
   targetPackage CDATA #REQUIRED
   targetProject CDATA #REQUIRED>
 

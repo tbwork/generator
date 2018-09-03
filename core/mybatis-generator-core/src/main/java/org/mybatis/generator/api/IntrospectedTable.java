@@ -28,6 +28,7 @@ import java.util.Properties;
 import org.mybatis.generator.config.Context;
 import org.mybatis.generator.config.GeneratedKey;
 import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
+import org.mybatis.generator.config.JavaExampleGeneratorConfiguration;
 import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
 import org.mybatis.generator.config.ModelType;
 import org.mybatis.generator.config.PropertyHolder;
@@ -460,6 +461,7 @@ public abstract class IntrospectedTable {
     public void initialize() {
         calculateJavaClientAttributes();
         calculateModelAttributes();
+        calculateExampleAttributes();
         calculateXmlAttributes();
 
         if (tableConfiguration.getModelType() == ModelType.HIERARCHICAL) {
@@ -836,6 +838,36 @@ public abstract class IntrospectedTable {
         setRecordWithBLOBsType(sb.toString());
 
         sb.setLength(0);
+        sb.append(pakkage);
+        sb.append('.');
+        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append("Example"); //$NON-NLS-1$
+        setExampleType(sb.toString());
+    }
+    
+    /**
+     * Calculate java example package.
+     *
+     * @return the string
+     */
+    protected String calculateJavaExamplePackage() {
+        JavaExampleGeneratorConfiguration config = context
+                .getJavaExampleGeneratorConfiguration();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(config.getTargetPackage());
+        sb.append(fullyQualifiedTable.getSubPackageForExample(isSubPackagesEnabled(config)));
+
+        return sb.toString();
+    }
+
+    /**
+     * Calculate example attributes.
+     */
+    protected void calculateExampleAttributes() {
+        String pakkage = calculateJavaExamplePackage();
+
+        StringBuilder sb = new StringBuilder(); 
         sb.append(pakkage);
         sb.append('.');
         sb.append(fullyQualifiedTable.getDomainObjectName());

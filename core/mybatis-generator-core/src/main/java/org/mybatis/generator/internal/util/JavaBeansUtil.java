@@ -268,13 +268,13 @@ public class JavaBeansUtil {
         Properties properties = context
                 .getJavaModelGeneratorConfiguration().getProperties();
         boolean rc = isTrue(properties
-                .getProperty(PropertyRegistry.MODEL_GENERATOR_TRIM_STRINGS));
+                .getProperty(PropertyRegistry.GENERATOR_TRIM_STRINGS));
         return rc;
     }
 
     private static boolean isTrimStringsEnabled(IntrospectedTable table) {
         TableConfiguration tableConfiguration = table.getTableConfiguration();
-        String trimSpaces = tableConfiguration.getProperties().getProperty(PropertyRegistry.MODEL_GENERATOR_TRIM_STRINGS);
+        String trimSpaces = tableConfiguration.getProperties().getProperty(PropertyRegistry.GENERATOR_TRIM_STRINGS);
         if (trimSpaces != null) {
             return isTrue(trimSpaces);
         }
@@ -282,10 +282,41 @@ public class JavaBeansUtil {
     }
 
     private static boolean isTrimStringsEnabled(IntrospectedColumn column) {
-        String trimSpaces = column.getProperties().getProperty(PropertyRegistry.MODEL_GENERATOR_TRIM_STRINGS);
+        String trimSpaces = column.getProperties().getProperty(PropertyRegistry.GENERATOR_TRIM_STRINGS);
         if (trimSpaces != null) {
             return isTrue(trimSpaces);
         }
         return isTrimStringsEnabled(column.getIntrospectedTable());
     }
+    
+    /**
+     * Checks if is trim strings enabled in modelGenerator configuration node.
+     *
+     * @param context
+     *            the context
+     * @return true, if is trim strings enabled
+     */
+    private static boolean isModelNodeTrimStringsEnabled(Context context) {
+        Properties properties = context
+                .getJavaModelGeneratorConfiguration().getProperties();
+        boolean rc = isTrue(properties
+                .getProperty(PropertyRegistry.GENERATOR_TRIM_STRINGS));
+        return rc;
+    }
+    
+    /**
+     * Checks if is trim strings enabled in exampleGenerator configuration node.
+     *
+     * @param context
+     *            the context
+     * @return true, if is trim strings enabled
+     */
+    private static boolean isExampleNodeTrimStringsEnabled(Context context) {
+        Properties properties = context
+                .getJavaExampleGeneratorConfiguration().getProperties();
+        boolean rc = isTrue(properties
+                .getProperty(PropertyRegistry.GENERATOR_TRIM_STRINGS));
+        return rc;
+    }
+
 }

@@ -61,7 +61,10 @@ public class Context extends PropertyHolder {
     private JavaTypeResolverConfiguration javaTypeResolverConfiguration;
 
     private JavaModelGeneratorConfiguration javaModelGeneratorConfiguration;
-
+ 
+    /** The java model generator configuration. */
+    private JavaExampleGeneratorConfiguration javaExampleGeneratorConfiguration;
+ 
     private JavaClientGeneratorConfiguration javaClientGeneratorConfiguration;
 
     private ArrayList<TableConfiguration> tableConfigurations;
@@ -163,7 +166,7 @@ public class Context extends PropertyHolder {
         } else {
             javaModelGeneratorConfiguration.validate(errors, id);
         }
-
+        
         if (javaClientGeneratorConfiguration != null) {
             javaClientGeneratorConfiguration.validate(errors, id);
         }
@@ -216,6 +219,27 @@ public class Context extends PropertyHolder {
         this.javaModelGeneratorConfiguration = javaModelGeneratorConfiguration;
     }
 
+
+    /**
+     * Sets the java example generator configuration.
+     *
+     * @param javaExampleGeneratorConfiguration
+     *            the new java example generator configuration
+     */
+    public void setJavaExampleGeneratorConfiguration(
+            JavaExampleGeneratorConfiguration javaExampleGeneratorConfiguration) {
+        this.javaExampleGeneratorConfiguration = javaExampleGeneratorConfiguration;
+    }
+    
+    /**
+     * Gets the java example generator configuration.
+     *
+     * @return the java example generator configuration
+     */
+    public JavaExampleGeneratorConfiguration getJavaExampleGeneratorConfiguration() {
+        return javaExampleGeneratorConfiguration;
+    }
+    
     public void setJavaTypeResolverConfiguration(
             JavaTypeResolverConfiguration javaTypeResolverConfiguration) {
         this.javaTypeResolverConfiguration = javaTypeResolverConfiguration;
@@ -289,6 +313,11 @@ public class Context extends PropertyHolder {
                     .toXmlElement());
         }
 
+        if (javaExampleGeneratorConfiguration != null) {
+            xmlElement.addElement(javaExampleGeneratorConfiguration
+                    .toXmlElement());
+        }
+        
         if (sqlMapGeneratorConfiguration != null) {
             xmlElement.addElement(sqlMapGeneratorConfiguration.toXmlElement());
         }

@@ -25,7 +25,8 @@
     <version>1.4.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>mybatis-generator-core</artifactId>
+  <artifactId>mbg-core-ex</artifactId>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>MyBatis Generator Core</name>
 

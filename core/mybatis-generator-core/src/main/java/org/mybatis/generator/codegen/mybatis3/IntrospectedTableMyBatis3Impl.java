@@ -46,6 +46,9 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     
     protected List<AbstractJavaGenerator> javaModelGenerators;
 
+    /** The java example generators. */
+    protected List<AbstractJavaGenerator> javaExampleGenerators; 
+    
     protected List<AbstractJavaGenerator> clientGenerators;
 
     protected AbstractXmlGenerator xmlMapperGenerator;
@@ -53,6 +56,7 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     public IntrospectedTableMyBatis3Impl() {
         super(TargetRuntime.MYBATIS3);
         javaModelGenerators = new ArrayList<>();
+        javaExampleGenerators = new ArrayList<AbstractJavaGenerator>();
         clientGenerators = new ArrayList<>();
     }
 
@@ -60,7 +64,7 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     public void calculateGenerators(List<String> warnings,
             ProgressCallback progressCallback) {
         calculateJavaModelGenerators(warnings, progressCallback);
-        
+        calculateJavaExampleGenerators(warnings, progressCallback);
         AbstractJavaClientGenerator javaClientGenerator =
                 calculateClientGenerators(warnings, progressCallback);
             
@@ -154,6 +158,26 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
             javaModelGenerators.add(javaGenerator);
         }
     }
+    
+    
+    /**
+     * Calculate java example generators.
+     *
+     * @param warnings
+     *            the warnings
+     * @param progressCallback
+     *            the progress callback
+     */
+    protected void calculateJavaExampleGenerators(List<String> warnings,
+            ProgressCallback progressCallback) {
+        if (getRules().generateExampleClass()) {
+            AbstractJavaGenerator javaGenerator = new ExampleGenerator();
+            initializeAbstractGenerator(javaGenerator, warnings,
+                    progressCallback);
+            javaExampleGenerators.add(javaGenerator);
+        } 
+    }
+
 
     protected void initializeAbstractGenerator(
             AbstractGenerator abstractGenerator, List<String> warnings,
@@ -185,6 +209,19 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
             }
         }
 
+        for (AbstractJavaGenerator javaGenerator : javaExampleGenerators) {
+        	List<CompilationUnit> compilationUnits = javaGenerator
+                    .getCompilationUnits();
+            for (CompilationUnit compilationUnit : compilationUnits) {
+            	  GeneratedJavaFile gjf = new GeneratedJavaFile(compilationUnit,
+                          context.getJavaExampleGeneratorConfiguration()
+                                  .getTargetProject(),
+                                  context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
+                                  context.getJavaFormatter());
+                  answer.add(gjf);
+            }
+        }
+        
         for (AbstractJavaGenerator javaGenerator : clientGenerators) {
             List<CompilationUnit> compilationUnits = javaGenerator
                     .getCompilationUnits();
