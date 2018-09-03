@@ -15,6 +15,6 @@ From MBG to MBG-Ex, you just need to modify two parts of **generator configurati
 ```
   <!-- Example Class -->
   <javaExampleGenerator targetPackage="org.xxx.example" targetProject="../src/main/java">
-			<property name="enableSubPackages" value="true" />
-	</javaExampleGenerator>
+      <property name="enableSubPackages" value="true" />
+  </javaExampleGenerator>
 ```
