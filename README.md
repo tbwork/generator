@@ -1,7 +1,7 @@
 ## MyBatis Generator Extended (MBG-Ex)
 =======================
 
-This version of MBG supports to specify the package of example files (e.g., XXXExample), rather than put them together with model files which is the standard way of offical [MBG](https://github.com/mybatis/generator).
+This version of MBG supports to specify the package of example files (e.g., XXXExample), rather than put them together with model files which is the standard way of [the offical MBG](https://github.com/mybatis/generator).
 
 From MBG to MBG-Ex, you just need to modify two parts of **generator configuration file**:
 
