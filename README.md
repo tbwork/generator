@@ -19,6 +19,6 @@ From MBG to MBG-Ex, you just need to modify two parts of **generator configurati
   </javaExampleGenerator>
 ```
 
-## Dependencies
+## Easy To Deploy
 
-See [Release-1.0.0](https://github.com/tbwork/mbg-ex/tree/master/release).
+Here is the release jar package already for direct use. See [Release-1.0.0](https://github.com/tbwork/mbg-ex/tree/master/release).
