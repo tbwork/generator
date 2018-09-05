@@ -19,6 +19,6 @@
   </javaExampleGenerator>
 ```
 
-## 需要的Jar包
+## 当前可用的版本
 
 参考：[Release-1.0.0](https://github.com/tbwork/mbg-ex/tree/master/release) 
