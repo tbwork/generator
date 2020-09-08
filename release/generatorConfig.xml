@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "https://raw.githubusercontent.com/tbwork/tbwork.github.io/master/dtd/mybatis-generator-config_1_0.dtd" >
-<generatorConfiguration > "123456"/> 
-  <classPathEntry location="D:\dao-gen-tool\mysql-connector-java-5.1.36.jar" />
-  <context id="anole_db" defaultModelType="conditional" targetRuntime="MyBatis3">
-    <property name="javaFileEncoding" value="UTF-8"/> 
-    <property name="autoDelimitKeywords" value="true"/>
-    <property name="beginningDelimiter" value="`"/>
-    <property name="endingDelimiter" value="`"/>
-    <commentGenerator> 
-    	<property name="suppressAllComments" value="true" />
-    	<property name="suppressDate" value="true" />
-    </commentGenerator> 
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
-    				connectionURL="jdbc:mysql://localhost:3306/anole" 
-    				userId="username" 
-    				password="password" 
-    />
-    <javaTypeResolver >
-      <property name="forceBigDecimals" value="false" />
-    </javaTypeResolver> 
-	<!-- Model Class -->
-    <javaModelGenerator targetPackage="org.xxx.model" targetProject="../src/main/java">
-      <property name="enableSubPackages" value="false" />
-      <property name="trimStrings" value="true" />
-    </javaModelGenerator>
-    
-    <!-- Example Class -->
-    <javaExampleGenerator targetPackage="org.xxx.example" targetProject="../src/main/java">
-			<property name="enableSubPackages" value="true" />
-    </javaExampleGenerator>
-    
-    <!-- XML Files -->
-    <sqlMapGenerator targetPackage="org.sqlmap"  targetProject="../src/main/resources">
-      <property name="enableSubPackages" value="false" />
-    </sqlMapGenerator> 
-    
-     <table tableName="test" domainObjectName="Test" 
-      enableCountByExample="true" 
-	  enableUpdateByExample="true" 
-	  enableDeleteByExample="true"
-      enableSelectByExample="true"  
-      > 
-      <generatedKey column="id" sqlStatement="Mysql" identity="true"></generatedKey>
-    </table>
-  </context>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "https://tbwork.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="./mysql-connector-java-5.1.36.jar" />
+    <context id="flap_note" defaultModelType="conditional" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/xxxxx"
+                        userId="root"
+                        password="123456"
+        />
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- Model Class -->
+        <javaModelGenerator targetPackage="cxxxx.dal.dal.dpo" targetProject="../src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- Example Class -->
+        <javaExampleGenerator targetPackage="xxxx.dal.example" targetProject="../src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaExampleGenerator>
+
+
+
+        <!-- XML Files -->
+        <sqlMapGenerator targetPackage="mappers"  targetProject="../src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- DAO Files -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="xxxx.dal.dao" targetProject="../src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <table tableName="xxxxxx" domainObjectName="xxxxxx"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+        >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"></generatedKey>
+        </table>
+
+    </context>
 </generatorConfiguration>
